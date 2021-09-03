@@ -68,7 +68,7 @@ class _SkipCheck(IntFlag):
 
 
 class GraphExecutionManager(GraphExecutionInterface):
-    def __init__(self, module, debug_options: DebugOptions, fallback_manager: _FallbackManager):
+    def __init__(self, module, debug_options: DebugOptions, fallback_manager: _FallbackManager, export_modules_as_functions):
         """Manages construction and execution of ONNX graphs"""
 
         super(GraphExecutionManager, self).__init__(module._original_module)
@@ -76,6 +76,7 @@ class GraphExecutionManager(GraphExecutionInterface):
         # IMPORTANT: Debug and Fallback must the configured first
         self._debug_options = debug_options
         self._fallback_manager = fallback_manager
+        self._export_modules_as_functions = export_modules_as_functions
 
         # Original and flattened (tranformed) output module
         self._flattened_module = module
@@ -356,7 +357,9 @@ class GraphExecutionManager(GraphExecutionInterface):
                                   dynamic_axes=self._input_info.dynamic_axes,
                                   verbose=self._debug_options.logging.log_level < LogLevel.WARNING,
                                   export_params=False,
-                                  keep_initializers_as_inputs=True)
+                                  keep_initializers_as_inputs=True,
+                                  export_modules_as_functions=self._export_modules_as_functions # TODO: DO NOT exist yet
+                                  )
         except Exception as e:
             raise wrap_exception(ORTModuleONNXModelException,
                                  RuntimeError(f'There was an error while exporting the PyTorch model to ONNX: {e}'))
