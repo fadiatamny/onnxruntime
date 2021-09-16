@@ -20,7 +20,7 @@ parameters:
   default: false
 
 jobs:
-- template: templates/c-api-cpu-no-java.yml
+- template: templates/c-api-cpu-audio-no-java.yml
   parameters:
     RunOnnxRuntimeTests: ${{ parameters.RunOnnxRuntimeTests }}
     DoCompliance: ${{ parameters.DoCompliance }}
