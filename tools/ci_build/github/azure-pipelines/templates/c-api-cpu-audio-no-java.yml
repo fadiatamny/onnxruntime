@@ -82,7 +82,7 @@ jobs:
        ls -al $(Build.ArtifactStagingDirectory)
       displayName: 'Create Artifacts'
 
-    - template: c-api-artifacts-package-and-publish-steps-posix.yml
+    - template: c-api-artifacts-package-and-publish-steps-posix_audio_ops.yml
       parameters:
           buildConfig: 'Release'
           artifactName: 'onnxruntime-linux-$(ONNXRUNTIME_ARCH)-$(OnnxRuntimeVersion)'
