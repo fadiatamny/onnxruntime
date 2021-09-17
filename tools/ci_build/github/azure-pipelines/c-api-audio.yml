@@ -27,5 +27,5 @@ jobs:
     DoEsrp: ${{ parameters.DoEsrp }}
     IsReleaseBuild: ${{ parameters.IsReleaseBuild }}
     OrtNugetPackageId: 'Microsoft.ML.OnnxRuntime'
-    AdditionalBuildFlags: '--cmake_extra_defines onnxruntime_BUILD_MS_EXPERIMENTAL_OPS=ON'
+    AdditionalBuildFlags: '--ms_experimental'
     BuildVariant: 'default'
