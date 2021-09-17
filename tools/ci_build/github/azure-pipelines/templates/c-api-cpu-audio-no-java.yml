@@ -398,13 +398,13 @@ jobs:
     NugetPackageName : 'Microsoft.ML.OnnxRuntime'
     ArtifactSuffix: 'CPU'
 
-- template: ../nuget/templates/test_linux.yml
+- template: test_linux.yml
   parameters:
     AgentPool : Linux-CPU
     NugetPackageName : 'Microsoft.ML.OnnxRuntime'
     ArtifactSuffix: 'CPU'
 
-- template: ../nuget/templates/test_macos.yml
+- template: test_macos.yml
   parameters:
     AgentPool : macOS-10.15
     ArtifactSuffix: 'CPU'
