@@ -29,7 +29,7 @@ jobs:
       artifactName: 'onnxruntime-linux-x64'
       targetPath: '$(Build.BinariesDirectory)/testdata'
 
-  - template: ../nuget/template/get-nuget-package-version-as-variable.yml
+  - template: ../nuget/templates/get-nuget-package-version-as-variable.yml
     parameters:
       packageFolder: '$(Build.BinariesDirectory)/nuget-artifact'
 
