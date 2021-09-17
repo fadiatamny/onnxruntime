@@ -29,7 +29,7 @@ jobs:
       artifactName: 'onnxruntime-linux-x64'
       targetPath: '$(Build.BinariesDirectory)/testdata'
 
-  - template: get-nuget-package-version-as-variable.yml
+  - template: ../nuget/template/get-nuget-package-version-as-variable.yml
     parameters:
       packageFolder: '$(Build.BinariesDirectory)/nuget-artifact'
 
@@ -53,8 +53,8 @@ jobs:
       IsReleaseBuild: $(IsReleaseBuild)
       PACKAGENAME: ${{ parameters.NugetPackageName }}
         
-  - template: ../../templates/component-governance-component-detection-steps.yml
+  - template: component-governance-component-detection-steps.yml
     parameters :
       condition : 'always'
 
-  - template: ../../templates/clean-agent-build-directory-step.yml
+  - template: clean-agent-build-directory-step.yml
